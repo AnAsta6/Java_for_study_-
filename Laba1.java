@@ -1,8 +1,11 @@
 import java.util.Scanner;
 import java.math.BigDecimal;
 
+
 public class Laba1 {
-    public static void main(String[] args) {
+    static Laba1 l = new Laba1();
+
+    public void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         //меню
@@ -105,11 +108,11 @@ public class Laba1 {
         System.out.print("Если вы введёте два символа рядом, то в ответе будет число 1"+"\n");
         System.out.print("Введите символ (цифру от 0 до 9): ");
         char x = scanner.next().charAt(0);
-        int result = charToNum(x);
+        int result = l.charToNum(x);
         System.out.println("Результат: " + result);
     }
 
-    public static int charToNum(char x) {
+    public int charToNum(char x) {
         return x - 48; // вычитание из Значение ASCII числа х значения нуля
     }
 
@@ -119,11 +122,11 @@ public class Laba1 {
         System.out.print("Программа выведет true если число двузначное. " + "\n");
         System.out.print("Введите число: ");
         int x = scanner.nextInt();
-        boolean result = is2Digits(x);
+        boolean result = l.is2Digits(x);
         System.out.println("Результат: " + result);
     }
 
-    public static boolean is2Digits(int x) {
+    public boolean is2Digits(int x) {
         return x >= 10 && x < 100; // ограничение для того, что бы были двухзначные числа
     }
 
@@ -139,11 +142,11 @@ public class Laba1 {
         int b = scanner.nextInt();
         System.out.print("Введите число для проверки: ");
         int num = scanner.nextInt();
-        boolean result = isInRange(a, b, num);
+        boolean result = l.isInRange(a, b, num);
         System.out.println("Результат: " + result);
     }
 
-    public static boolean isInRange(int a, int b, int num) {
+    public boolean isInRange(int a, int b, int num) {
         return (a <= num && num <= b) || (b <= num && num <= a); //проверка на нахождение числа в диапазоне который задал пользователь
 
     }
@@ -159,11 +162,11 @@ public class Laba1 {
         int b = scanner.nextInt();
         System.out.print("Введите третье число: ");
         int c = scanner.nextInt();
-        boolean result = isEqual(a, b, c);
+        boolean result = l.isEqual(a, b, c);
         System.out.println("Результат: " + result);
     }
 
-    public static boolean isEqual(int a, int b, int c ) {
+    public boolean isEqual(int a, int b, int c ) {
         return (a == c && c == b && a == b ) ; //проверка на нахождение числа в диапазоне который задал пользователь
 
 
@@ -176,11 +179,11 @@ public class Laba1 {
         System.out.print("Программа считает модуль числа"+"\n");
         System.out.print("Введите число: ");
         int x = scanner.nextInt();
-        int result = abs(x);
+        int result = l.abs(x);
         System.out.println("Модуль числа: " + result);
     }
 
-    public static int abs(int x) {// считает модуль
+    public int abs(int x) {// считает модуль
         if (x < 0) {
             return -x; // Если x отрицательное, возвращаем его противоположное значение
         } else {
@@ -197,11 +200,11 @@ public class Laba1 {
         System.out.print(" Если ни одно из условий не выполняется - false"+"\n");
         System.out.print("Введите число для проверки: ");
         int x = scanner.nextInt();
-        boolean result = is35(x);
+        boolean result = l.is35(x);
         System.out.println("Результат: " + result);
     }
 
-    public static boolean is35(int x) {
+    public boolean is35(int x) {
         // Проверяем делимость на 3 и 5
         if (x % 3 == 0 && x % 5 == 0) {
             return false; // Если делится и на 3, и на 5, возвращает мfalse
@@ -224,11 +227,11 @@ public class Laba1 {
         int y = scanner.nextInt();
         System.out.print("Введите третье число: ");
         int z = scanner.nextInt();
-        int result = max3(x, y, z);
+        int result = l.max3(x, y, z);
         System.out.println("Максимум: " + result);
     }
 
-    public static int max3(int x, int y, int z) {
+    public int max3(int x, int y, int z) {
         if (x >= y && x >= z) {
             return x;
         } else if (y >= x && y >= z) {
@@ -249,11 +252,11 @@ public class Laba1 {
         int x = scanner.nextInt();
         System.out.print("Введите второе число: ");
         int y = scanner.nextInt();
-        int result = sum2(x, y);
+        int result = l.sum2(x, y);
         System.out.println("Результат: " + result);
     }
 
-    public static int sum2(int x, int y) {
+    public int sum2(int x, int y) {
         int sum = x + y;
         if (sum >= 10 && sum <= 19) {
             return 20;
@@ -269,11 +272,11 @@ public class Laba1 {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите день недели (1-7): ");
         int x = scanner.nextInt();
-        String result = day(x);
+        String result = l.day(x);
         System.out.println("День недели: " + result);
     }
 
-    public static String day(int x) {
+    public String day(int x) {
         switch (x) {
             case 1:
                 return "понедельник";
@@ -302,11 +305,11 @@ public class Laba1 {
         System.out.print("Программа возвращает строку, в которой будут записаны все числа от 0 до x (включительно)" + "\n");
         System.out.print("Введите число x: ");
         int x = scanner.nextInt();
-        String result = listNums(x);
+        String result = l.listNums(x);
         System.out.println("Числа подряд: " + result);
     }
 
-    public static String listNums(int x) {
+    public String listNums(int x) {
         String result = "";
         for (int i = 0; i <= x; i++) {
             result += i + " ";
@@ -321,11 +324,11 @@ public class Laba1 {
         System.out.print("Программа возвращает строку, в которой будут записаны все четные числа от 0 до x (включительно)" + "\n");
         System.out.print("Введите число x: ");
         int x = scanner.nextInt();
-        String result = chet(x);
+        String result = l.chet(x);
         System.out.println("Четные числа: " + result);
     }
 
-    public static String chet(int x) {
+    public String chet(int x) {
         String result = "";
         for (int i = 0; i <= x; i += 2) {
             result += i + " ";
@@ -341,11 +344,11 @@ public class Laba1 {
         System.out.print("Программа считает количество знаков в числе x. " + "\n");
         System.out.print("Введите число x: ");
         long x = scanner.nextLong();
-        int result = numLen(x);
+        int result = l.numLen(x);
         System.out.println("Длина числа: " + result);
     }
 
-    public static int numLen(long x) {
+    public int numLen(long x) {
         int count = 0;
         while (x != 0) {
             x /= 10;
@@ -363,10 +366,10 @@ public class Laba1 {
         System.out.print("где x — количество строк и столбцов" + "\n");
         System.out.print("Введите размер квадрата x: ");
         int x = scanner.nextInt();
-        square(x);
+        l.square(x);
     }
 
-    public static void square(int x) {
+    public void square(int x) {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < x; j++) {
                 System.out.print("*");
@@ -384,10 +387,10 @@ public class Laba1 {
         System.out.print("а количество символов в ряду совпадает с номером строки, при этом треугольник выровнен по правому краю." + "\n");
         System.out.print("Введите высоту треугольника x: ");
         int x = scanner.nextInt();
-        rightTriangle(x);
+        l.rightTriangle(x);
     }
 
-    public static void rightTriangle(int x) {
+    public void rightTriangle(int x) {
         for (int i = 1; i <= x; i++) {
             for (int j = 1; j <= x - i; j++) {
                 System.out.print(" ");
@@ -415,11 +418,11 @@ public class Laba1 {
         }
         System.out.print("Введите значение x: ");
         int x = scanner.nextInt();
-        int result = findFirst(arr, x);
+        int result = l.findFirst(arr, x);
         System.out.println("Результат: " + result);
     }
 
-    public static int findFirst(int[] arr, int x) {
+    public int findFirst(int[] arr, int x) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == x) {
                 return i;
@@ -442,11 +445,11 @@ public class Laba1 {
         for (int i = 0; i < n; i++) {
             arr[i] = scanner.nextInt();
         }
-        int result = maxAbs(arr);
+        int result = l.maxAbs(arr);
         System.out.println("Результат: " + result);
     }
 
-    public static int maxAbs(int[] arr) {
+    public int maxAbs(int[] arr) {
         int max = arr[0]; // Начинаем с первого элемента
         for (int i = 1; i < arr.length; i++) {
             if (Math.abs(arr[i]) > Math.abs(max)) {
@@ -464,16 +467,16 @@ public class Laba1 {
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите массив arr: ");
-        int[] arr = readArray(scanner);
+        int[] arr = l.readArray(scanner);
         System.out.print("Введите массив ins: ");
-        int[] ins = readArray(scanner);
+        int[] ins = l.readArray(scanner);
         System.out.print("Введите позицию pos: ");
         int pos = scanner.nextInt();
-        int[] result = add(arr, ins, pos);
-        System.out.println("Результат: " + arrayToString(result));
+        int[] result = l.add(arr, ins, pos);
+        System.out.println("Результат: " + l.arrayToString(result));
     }
 
-    public static int[] add(int[] arr, int[] ins, int pos) {
+    public int[] add(int[] arr, int[] ins, int pos) {
         int[] result = new int[arr.length + ins.length];
         System.arraycopy(arr, 0, result, 0, pos);
         System.arraycopy(ins, 0, result, pos, ins.length);
@@ -481,7 +484,7 @@ public class Laba1 {
         return result;
     }
 
-    public static int[] readArray(Scanner scanner) {
+    public int[] readArray(Scanner scanner) {
         System.out.print("Введите количество элементов массива, а после ввода количества введите сами элементы через пробел: ");
         int n = scanner.nextInt();
         int[] arr = new int[n];
@@ -491,7 +494,7 @@ public class Laba1 {
         return arr;
     }
 
-    public static String arrayToString(int[] arr) {
+    public String arrayToString(int[] arr) {
         String result = "";
         for (int i : arr) {
             result += i + " ";
@@ -512,14 +515,14 @@ public class Laba1 {
         for (int i = 0; i < n; i++) {
             arr[i] = scanner.nextInt();
         }
-        int[] reversedArr = reverseBack(arr);
+        int[] reversedArr = l.reverseBack(arr);
         System.out.print("Реверс массива: ");
         for (int i = 0; i < n; i++) {
             System.out.print(reversedArr[i] + " ");
         }
     }
 
-    public static int[] reverseBack(int[] arr) {
+    public int[] reverseBack(int[] arr) {
         int[] reversedArr = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
             reversedArr[i] = arr[arr.length - i - 1];
@@ -542,14 +545,14 @@ public class Laba1 {
         }
         System.out.print("Введите число x: ");
         int x = scanner.nextInt();
-        int[] indices = findAll(arr, x);
+        int[] indices = l.findAll(arr, x);
         System.out.print("Индексы вхождений числа x: ");
         for (int i = 0; i < indices.length; i++) {
             System.out.print(indices[i] + " ");
         }
     }
 
-    public static int[] findAll(int[] arr, int x) {
+    public int[] findAll(int[] arr, int x) {
         int count = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == x) {
