@@ -1,11 +1,9 @@
 import java.util.Scanner;
 import java.math.BigDecimal;
 
-
 public class Laba1 {
     static Laba1 l = new Laba1();
-
-    public void main(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         //меню
@@ -179,11 +177,11 @@ public class Laba1 {
         System.out.print("Программа считает модуль числа"+"\n");
         System.out.print("Введите число: ");
         int x = scanner.nextInt();
-        int result = l.abs(x);
+        int result = abs(x);
         System.out.println("Модуль числа: " + result);
     }
 
-    public int abs(int x) {// считает модуль
+    public static int abs(int x) {// считает модуль
         if (x < 0) {
             return -x; // Если x отрицательное, возвращаем его противоположное значение
         } else {
@@ -252,7 +250,7 @@ public class Laba1 {
         int x = scanner.nextInt();
         System.out.print("Введите второе число: ");
         int y = scanner.nextInt();
-        int result = l.sum2(x, y);
+        int result =    l.sum2(x, y);
         System.out.println("Результат: " + result);
     }
 
@@ -473,7 +471,7 @@ public class Laba1 {
         System.out.print("Введите позицию pos: ");
         int pos = scanner.nextInt();
         int[] result = l.add(arr, ins, pos);
-        System.out.println("Результат: " + l.arrayToString(result));
+        System.out.println("Результат: " + arrayToString(result));
     }
 
     public int[] add(int[] arr, int[] ins, int pos) {
@@ -494,7 +492,7 @@ public class Laba1 {
         return arr;
     }
 
-    public String arrayToString(int[] arr) {
+    public static String arrayToString(int[] arr) {
         String result = "";
         for (int i : arr) {
             result += i + " ";
