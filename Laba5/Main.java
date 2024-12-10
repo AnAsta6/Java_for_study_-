@@ -57,6 +57,24 @@ public class Main {
                 case 2:
                     // Задание 2
 
+                    System.out.print("Введите имя кота: ");
+                    String catName = scanner.next();
+                    Cat cat = new Cat(catName);
+
+
+
+                    System.out.print("Введите количество мяуканий кота "+ catName +" : ");
+                    int meowCount = scanner.nextInt();
+                    Meowable[] meowables = new Meowable[meowCount];
+                    for (int i = 0; i < meowCount; i++) {
+                        meowables[i] = cat;
+                    }
+
+
+                    Funs.meowsCare(meowables); //вызов метода meowCount
+                    System.out.println("Кот " + catName + " мяукал " + cat.getMeowCount() + " раз");
+
+
                     break;
 
                 case 3:
