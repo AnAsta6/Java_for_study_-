@@ -22,7 +22,6 @@ public class Main {
                     // Задание 1
 
                     try {
-
                         System.out.print("Введите числитель дроби: ");
                         int numerator = scanner.nextInt();
                         System.out.print("Введите знаменатель дроби: ");
@@ -40,18 +39,13 @@ public class Main {
                         System.out.println("Обновленная дробь: " + fraction);
                         System.out.println("Обновленное вещественное значение: " + fraction.getValue());
 
-                        // сравнение дробей
+                        // Сравнение дробей
                         Fraction anotherFraction = new Fraction(numerator, denominator);
                         System.out.println("Дроби равны: " + fraction.equals(anotherFraction));
 
-                    }
-                    // исключение
-                    // для выхода из программы при вводе 0 в знаменатель
-                    catch (IllegalArgumentException e) {
+                    } catch (IllegalArgumentException e) {
                         System.out.println("Ошибка: " + e.getMessage());
                     }
-
-
                     break;
 
                 case 2:
@@ -72,13 +66,15 @@ public class Main {
 
 
                     Funs.meowsCare(meowables); //вызов метода meowCount
-                    System.out.println("Кот " + catName + " мяукал " + cat.getMeowCount() + " раз");
-
+                    System.out.println("Кот " + catName + " мяукал " + meowCount + " раз");
 
                     break;
 
                 case 3:
                     // Задание 3.9
+
+//                    System.out.println("Задание 3: Объединение списков");
+//                    listProcessor.processLists();
 
                     break;
 
@@ -100,10 +96,33 @@ public class Main {
                 case 7:
                     // Задание 7.1
 
+                    // массив объектов Point
+                    Point[] points = new Point[]{
+                            new Point(1, 2),
+                            new Point(2, 3),
+                            new Point(3, 4),
+                            new Point(4, 5),
+                            new Point(5, 6),
+                            new Point(6, 7),
+                            new Point(7, 8),
+                            new Point(8, 9),
+                            new Point(9, 10),
+                            new Point(10, 11),
+                    };
+                    // Вызываем метод firstTask класса StreamWorker и передаем ему массив объектов Point
+                    Polyline polyline = StreamWorker.firstTask(points);
+                    // вывод объекта polyline
+                    System.out.println(polyline);
+
+
                     break;
 
                 case 8:
                     // Задание 7.2
+                    // Вызывает метод secondTask класса StreamWorker и передаем ему путь к файлу
+                    var result = StreamWorker.secondTask("src/text2.txt");
+                    // результат
+                    System.out.println(result);
 
                     break;
 
@@ -116,3 +135,4 @@ public class Main {
         scanner.close();
     }
 }
+
