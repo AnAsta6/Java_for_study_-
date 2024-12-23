@@ -2,18 +2,18 @@
 
 public class Cat implements Meowable {
     private String name; // Имя кота
-    private int meowCount; // Счетчик мяуканий
+//    private int meowCount; // Счетчик мяуканий
 
     // Конструктор
     public Cat(String name) {
         this.name = name;
-        this.meowCount = 0;
+//        this.meowCount = 0;
     }
 
     @Override
     public void meow() {
         System.out.println(name + ": мяу!");
-        meowCount++;
+//        meowCount++;
     }
 
     // Метод для получения текстовой формы кота
@@ -22,7 +22,7 @@ public class Cat implements Meowable {
         return "кот: " + name;
     }
 
-    public int getMeowCount() {
-        return meowCount;
-    }
+//    public int getMeowCount() {
+//        return meowCount;
+//    }
 }
