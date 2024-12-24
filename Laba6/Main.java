@@ -1,3 +1,7 @@
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
+
 import java.util.Scanner;
 
 public class Main {
@@ -88,7 +92,8 @@ public class Main {
 
                 case 9:
                     // Задание 4
-
+                    runTests();
+                    
                     break;
 
                 default:
@@ -98,6 +103,13 @@ public class Main {
         }
 
         scanner.close();
+    }
+    private static void runTests() {
+        Result result = JUnitCore.runClasses(ValidationTest.class);
+        for (Failure failure : result.getFailures()) {
+            System.out.println(failure.toString());
+        }
+        System.out.println("Тесты завершены. Всего тестов: " + result.getRunCount() + ", проваленных: " + result.getFailureCount());
     }
 }
 
