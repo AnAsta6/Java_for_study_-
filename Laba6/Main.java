@@ -1,7 +1,4 @@
-//лаба 6
-
 import java.util.Scanner;
-
 
 public class Main {
     static Main m = new Main();
@@ -19,45 +16,80 @@ public class Main {
 
             switch (taskNumber) {
                 case 1:
-                    // Задание 1
+                    // Задание 1.2
+                    try {
+                        // Создаем объект Human с некорректным возрастом (750 лет)
+                        Human h = new Human(750);
+                        System.out.println(h); // Выводим объект, например: Human{age=750}
 
-    
+                        // Выполняем валидацию объекта с использованием класса тестов HumanTests
+                        Validator.validate(h, HumanTests.class);
+                    } catch (Validator.ValidationException e) {
+                        // Печатаем сообщение об ошибке, если валидация не прошла
+                        System.out.println(e.getMessage());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                     break;
 
                 case 2:
-                    // Задание 2
+                    // Задание 2.1
 
                     break;
 
                 case 3:
+                    // Задание 2.2
 
                     break;
 
                 case 4:
-                   
+                    // Задание 2.3
+
                     break;
 
                 case 5:
-             
+                    // Задание 2.4
 
                     break;
 
                 case 6:
+                    // Задание 2.5
 
-                    
                     break;
 
                 case 7:
-                  
+                    // Задание 2.6
+
                     break;
 
                 case 8:
-                   
+                    // Задание 3.2
+                    try {
+                        // Создаем несколько объектов
+                        HumanV human1 = new HumanV(750);
+                        System.out.println(human1);
+                        HumanV human2 = new HumanV(25);
+                        System.out.println(human2);
+
+                        Person person1 = new Person(150);
+                        System.out.println(person1);
+                        Person person2 = new Person(0);
+                        System.out.println(person2);
+
+                        // Выполняем валидацию объектов
+                        ValidatorV.validate(human1, human2, person1, person2);
+                    } catch (ValidatorV.ValidationExceptionV e) {
+                        System.out.println(e.getMessage());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
 
                 case 9:
-                   
-                    break;    
+                    // Задание 4
+
+                    break;
 
                 default:
                     System.out.println("Неверный номер задания. Пожалуйста, выберите номер от 1 до 9.");
@@ -68,4 +100,5 @@ public class Main {
         scanner.close();
     }
 }
+
 
