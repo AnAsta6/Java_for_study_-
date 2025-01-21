@@ -72,6 +72,7 @@ public class MainController {
     @GetMapping("/addSubscriber")
     public String showAddSubscriberForm(Model model) {
         model.addAttribute("subscriber", new Subscriber());
+        model.addAttribute("clients", clientRepository.findAll());
         return "addSubscriber";
     }
 
@@ -168,6 +169,7 @@ public class MainController {
     public String showEditSubscriberForm(@PathVariable Integer id, Model model) {
         Subscriber subscriber = subscriberRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid subscriber Id:" + id));
         model.addAttribute("subscriber", subscriber);
+        model.addAttribute("clients", clientRepository.findAll());
         return "editSubscriber";
     }
 
@@ -222,6 +224,4 @@ public class MainController {
         trafficRepository.save(traffic);
         return "redirect:/";
     }
-
-
 }

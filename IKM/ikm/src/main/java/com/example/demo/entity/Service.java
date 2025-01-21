@@ -3,16 +3,14 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Getter
-@Setter
+@lombok.Getter
+@lombok.Setter
 @Entity
-@Table(name = "services", schema = "public")
+@Table(name = "service", schema = "public")
 public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

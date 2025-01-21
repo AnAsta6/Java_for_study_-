@@ -6,23 +6,70 @@
     <title>Добавить абонента</title>
     <link rel="stylesheet" href="/static/styles.css">
     <style>
-        .button-container .button-home {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5e6f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            background-color: #81bfb7;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #8ad48d;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #86eb8a;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container a {
             background-color: #ff6347;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
-            margin: 5px;
             display: inline-block;
         }
-        .button-container .button-home:hover {
+        .button-container a:hover {
             background-color: #ff4500;
         }
     </style>
 </head>
 <body>
 <h1>Добавить абонента</h1>
-<form action="#" th:action="@{/addSubscriber}" th:object="${subscriber}" method="post">
+<form th:action="@{/addSubscriber}" th:object="${subscriber}" method="post">
+    <label for="client">Клиент:</label>
+    <select id="client" th:field="*{client}">
+        <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.clientFio}"></option>
+    </select>
     <label for="serviceAddress">Адрес обслуживания:</label>
     <input type="text" id="serviceAddress" th:field="*{serviceAddress}" required>
     <label for="basicService">Основная услуга:</label>
