@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить абонента</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        .button-container .button-home {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .button-container .button-home:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+<h1>Добавить абонента</h1>
+<form action="#" th:action="@{/addSubscriber}" th:object="${subscriber}" method="post">
+    <label for="serviceAddress">Адрес обслуживания:</label>
+    <input type="text" id="serviceAddress" th:field="*{serviceAddress}" required>
+    <label for="basicService">Основная услуга:</label>
+    <input type="text" id="basicService" th:field="*{basicService}" required>
+    <button type="submit">Добавить абонента</button>
+</form>
+
+<div class="button-container">
+    <a th:href="@{/}" class="button-home">Вернуться в главное меню</a>
+</div>
+
+</body>
+</html>

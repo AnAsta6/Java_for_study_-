@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить услугу</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        .button-container .button-home {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .button-container .button-home:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+<h1>Добавить услугу</h1>
+<form action="#" th:action="@{/addService}" th:object="${service}" method="post">
+    <label for="serviceN">Название услуги:</label>
+    <input type="text" id="serviceN" th:field="*{serviceN}" required>
+    <label for="subscriber">Абонент:</label>
+    <select id="subscriber" th:field="*{subscriber}" required>
+        <option th:each="subscriber : ${subscribers}" th:value="${subscriber.id}" th:text="${subscriber.serviceAddress}"></option>
+    </select>
+    <label for="tariff">Тариф:</label>
+    <select id="tariff" th:field="*{tariff}" required>
+        <option th:each="tariff : ${tariffs}" th:value="${tariff.id}" th:text="${tariff.tariffN}"></option>
+    </select>
+    <button type="submit">Добавить услугу</button>
+</form>
+
+<div class="button-container">
+    <a th:href="@{/}" class="button-home">Вернуться в главное меню</a>
+</div>
+
+</body>
+</html>

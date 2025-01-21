@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Данные из таблиц</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5e6f0;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color: #81bfb7;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: white;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        li span {
+            margin-right: 20px;
+        }
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .button-container a {
+            background-color: #8ad48d;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            display: inline-block;
+        }
+        .button-container a:hover {
+            background-color: #86eb8a;
+        }
+        .button-edit, .button-delete {
+            text-decoration: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        .button-edit {
+            background-color: #8ecafa;
+        }
+        .button-edit:hover {
+            background-color: #52a5f7;
+        }
+        .button-delete {
+            background-color: #f5877f;
+        }
+        .button-delete:hover {
+            background-color: #ff594d;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Клиенты</h1>
+<ul>
+    <li th:each="client : ${clients}">
+        <span th:text="${client.id}">ID</span>
+        <span th:text="${client.clientFio}">ФИО</span>
+        <span th:text="${client.phoneNumber}">Номер телефона</span>
+        <a th:href="@{/editClient/{id}(id=${client.id})}" class="button button-edit"><i class="fas fa-edit"></i> Редактировать</a>
+        <a th:href="@{/deleteClient/{id}(id=${client.id})}" class="button button-delete"><i class="fas fa-trash-alt"></i> Удалить</a>
+    </li>
+    <div class="button-container">
+        <a href="/addClient" class="button"><i class="fas fa-add"></i> Добавить клиента</a>
+    </div>
+</ul>
+
+<h1>Абоненты</h1>
+<ul>
+    <li th:each="subscriber : ${subscribers}">
+        <span th:text="${subscriber.id}">ID</span>
+        <span th:text="${subscriber.serviceAddress}">Адрес обслуживания</span>
+        <span th:text="${subscriber.basicService}">Основная услуга</span>
+        <a th:href="@{/editSubscriber/{id}(id=${subscriber.id})}" class="button button-edit"><i class="fas fa-edit"></i> Редактировать</a>
+        <a th:href="@{/deleteSubscriber/{id}(id=${subscriber.id})}" class="button button-delete"><i class="fas fa-trash-alt"></i> Удалить</a>
+    </li>
+    <div class="button-container">
+        <a href="/addSubscriber" class="button"><i class="fas fa-add"></i> Добавить абонента</a>
+    </div>
+</ul>
+
+<h1>Тарифы</h1>
+<ul>
+    <li th:each="tariff : ${tariffs}">
+        <span th:text="${tariff.id}">ID</span>
+        <span th:text="${tariff.tariffN}">Название тарифа</span>
+        <span th:text="${tariff.tariffCost}">Стоимость тарифа</span>
+        <span th:text="${tariff.validityD}">Дата действия</span>
+        <a th:href="@{/editTariff/{id}(id=${tariff.id})}" class="button button-edit"><i class="fas fa-edit"></i> Редактировать</a>
+        <a th:href="@{/deleteTariff/{id}(id=${tariff.id})}" class="button button-delete"><i class="fas fa-trash-alt"></i> Удалить</a>
+    </li>
+    <div class="button-container">
+        <a href="/addTariff" class="button"><i class="fas fa-add"></i> Добавить тариф</a>
+    </div>
+</ul>
+
+<h1>Услуги</h1>
+<ul>
+    <li th:each="service : ${services}">
+        <span th:text="${service.id}">ID</span>
+        <span th:text="${service.serviceN}">Название услуги</span>
+        <span th:text="${service.subscriber.serviceAddress}">Адрес абонента</span>
+        <span th:text="${service.tariffs.tariffN}">Название тарифа</span>
+        <a th:href="@{/editService/{id}(id=${service.id})}" class="button button-edit"><i class="fas fa-edit"></i> Редактировать</a>
+        <a th:href="@{/deleteService/{id}(id=${service.id})}" class="button button-delete"><i class="fas fa-trash-alt"></i> Удалить</a>
+    </li>
+    <div class="button-container">
+        <a href="/addService" class="button"><i class="fas fa-add"></i> Добавить услугу</a>
+    </div>
+</ul>
+
+<h1>Трафик</h1>
+<ul>
+    <li th:each="traffic : ${traffics}">
+        <span th:text="${traffic.id}">ID</span>
+        <span th:text="${traffic.trafficCost}">Стоимость трафика</span>
+        <span th:text="${traffic.usageT}">Время использования</span>
+        <span th:text="${traffic.usageD}">Дата использования</span>
+        <span th:text="${traffic.services.serviceN}">Название услуги</span>
+        <a th:href="@{/editTraffic/{id}(id=${traffic.id})}" class="button button-edit"><i class="fas fa-edit"></i> Редактировать</a>
+        <a th:href="@{/deleteTraffic/{id}(id=${traffic.id})}" class="button button-delete"><i class="fas fa-trash-alt"></i> Удалить</a>
+    </li>
+    <div class="button-container">
+        <a href="/addTraffic" class="button"><i class="fas fa-add"></i> Добавить трафик</a>
+    </div>
+</ul>
+
+</body>
+</html>
