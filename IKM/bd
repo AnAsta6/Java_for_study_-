@@ -1,1 +1,42 @@
-1
+-- Создание таблицы "Client"
+CREATE TABLE Client (
+    id_subscriber SERIAL PRIMARY KEY,
+    client_fio VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL
+);
+
+-- Создание таблицы "Subscriber"
+CREATE TABLE Subscriber (
+    id_subscriber SERIAL PRIMARY KEY,
+    service_address VARCHAR(255),
+    basic_service VARCHAR(30),
+    FOREIGN KEY (id_subscriber) REFERENCES Client(id_subscriber)
+);
+
+-- Создание таблицы "Tariffs"
+CREATE TABLE Tariffs (
+    id_tariff SERIAL PRIMARY KEY,
+    tariff_cost DECIMAL(10, 2) NOT NULL,
+    tariff_n VARCHAR(255) NOT NULL,
+    validity_d DATE
+);
+
+-- Создание таблицы "Services"
+CREATE TABLE Services (
+    id_service SERIAL PRIMARY KEY,
+    id_subscriber INT NOT NULL,
+    id_tariff INT NOT NULL,
+    service_n VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_subscriber) REFERENCES Subscriber(id_subscriber),
+    FOREIGN KEY (id_tariff) REFERENCES Tariffs(id_tariff)
+);
+
+-- Создание таблицы "Traffic"
+CREATE TABLE Traffic (
+    id_traffic SERIAL PRIMARY KEY,
+    id_service INT NOT NULL,
+    traffic_cost DECIMAL(10, 2) NOT NULL,
+    usage_t TIMESTAMP NOT NULL,
+    usage_d DATE NOT NULL,
+    FOREIGN KEY (id_service) REFERENCES Services(id_service)
+);
