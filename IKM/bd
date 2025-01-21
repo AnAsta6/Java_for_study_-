@@ -1,3 +1,14 @@
+-- Удалить всё
+DO $$
+DECLARE
+    r RECORD;
+BEGIN
+    -- Удаление всех таблиц в схеме public
+    FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') LOOP
+        EXECUTE 'DROP TABLE IF EXISTS ' || quote_ident(r.tablename) || ' CASCADE';
+    END LOOP;
+END $$;
+
 -- Создание таблицы "Client"
 CREATE TABLE Client (
     id_subscriber SERIAL PRIMARY KEY,
@@ -13,7 +24,7 @@ CREATE TABLE Subscriber (
     FOREIGN KEY (id_subscriber) REFERENCES Client(id_subscriber)
 );
 
--- Создание таблицы "Tariffs"
+-- Создание таблицы "Tariff"
 CREATE TABLE Tariffs (
     id_tariff SERIAL PRIMARY KEY,
     tariff_cost DECIMAL(10, 2) NOT NULL,
@@ -21,8 +32,8 @@ CREATE TABLE Tariffs (
     validity_d DATE
 );
 
--- Создание таблицы "Services"
-CREATE TABLE Services (
+-- Создание таблицы "Service"
+CREATE TABLE Service (
     id_service SERIAL PRIMARY KEY,
     id_subscriber INT NOT NULL,
     id_tariff INT NOT NULL,
@@ -38,5 +49,5 @@ CREATE TABLE Traffic (
     traffic_cost DECIMAL(10, 2) NOT NULL,
     usage_t TIMESTAMP NOT NULL,
     usage_d DATE NOT NULL,
-    FOREIGN KEY (id_service) REFERENCES Services(id_service)
+    FOREIGN KEY (id_service) REFERENCES Service(id_service)
 );
